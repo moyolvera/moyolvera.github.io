@@ -10,9 +10,9 @@ function Portfolio({ resumeData }: { resumeData: ResumeData }) {
           <h1>RELATED EXPERIENCE AND PROJECTS</h1>
           <div>
             {resumeData.portfolio &&
-              resumeData.portfolio.map((item) => {
+              resumeData.portfolio.map((item, index) => {
                 return (
-                  <div className="row">
+                  <div key={`${item.name}-${index}`} className="row">
                     <div className="three columns center-text">
                       <img className="profile-pic" src={item.imgurl} alt="" />
                     </div>

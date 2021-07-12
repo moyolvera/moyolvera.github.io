@@ -14,9 +14,9 @@ function Resume({ resumeData }: { resumeData: ResumeData }) {
 
         <div className="nine columns main-col">
           {resumeData.education &&
-            resumeData.education.map((item) => {
+            resumeData.education.map((item, index) => {
               return (
-                <div className="row item" key={item.UniversityName}>
+                <div className="row item" key={`${item.specialization}-${index}`}>
                   <div className="twelve columns">
                     <h3>{item.UniversityName}</h3>
                     <p className="info">
@@ -42,9 +42,9 @@ function Resume({ resumeData }: { resumeData: ResumeData }) {
 
         <div className="nine columns main-col">
           {resumeData.work &&
-            resumeData.work.map((item) => {
+            resumeData.work.map((item, index) => {
               return (
-                <div className="row item" key={item.specialization}>
+                <div className="row item" key={`${item.CompanyName}-${index}`}>
                   <div className="twelve columns">
                     <h3>{item.CompanyName}</h3>
                     <p className="info">
@@ -56,8 +56,8 @@ function Resume({ resumeData }: { resumeData: ResumeData }) {
                     </p>
                     {item.Achievements.length > 0 && (
                       <ul>
-                        {item.Achievements.map((description) => (
-                          <li>
+                        {item.Achievements.map((description, index) => (
+                          <li key={`${description}-${index}`}>
                             <span>&bull;</span> {description}
                           </li>
                         ))}
@@ -82,9 +82,9 @@ function Resume({ resumeData }: { resumeData: ResumeData }) {
           <div className="bars">
             <ul className="skills">
               {resumeData.skills &&
-                resumeData.skills.map((item) => {
+                resumeData.skills.map((item, index) => {
                   return (
-                    <li key={item.skillname}>
+                    <li key={`${item.skillname}-${index}`}>
                       <span className={`bar-expand ${item.skillname.replace(' ', '').toLowerCase()}`}></span>
                       <br />
                       <em>{item.skillname}</em>

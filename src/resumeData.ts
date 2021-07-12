@@ -47,10 +47,38 @@ let resumeData: ResumeData = {
   ],
   work: [
     {
+      CompanyName: 'TimeClock Plus. TX, USA',
+      specialization: 'Reac Native Developer',
+      MonthOfLeaving: '',
+      YearOfLeaving: 'Current',
+      Achievements: [
+        'Lead React Native Developer working with a team based on Austin, Texas',
+        'Responsible of the integration and development of features requiring native implementation and control. (TouchId, Camera, etc)',
+        'Responsible for the application and configuration of Firebase services like Analytics and Cloud Messaging for Push Notifications. ',
+        'Training and mentorship activities about RN, code and PR reviews',
+      ],
+      Tools:
+        'React Native, NodeJS, Typescript, Redux, Hooks, Jest, Firebase Cloud, Appcenter, Xcode, Android Studio, Agile development.',
+      features: [
+        'Stricted Typescript implementation ',
+        'Build entirely using react hooks ',
+        'Redux toolkit drived app with thunk integration.',
+        'React Hooks application',
+        'Submission of image files from device camera.',
+        'Code push integrated to use over the air updates',
+        'Strict testing coverage using unit, integration and snapshots with Jest',
+        'Handling of rich push notifications using Firebase Cloud Messaging',
+        'Local authentication using TouchID (both OS) and FaceID',
+        'Interaction with REST API using Axios for consuming services and to manage server side authentication',
+        'UX improvements around the app identifying areas of oportunity and implementing useful aimations',
+        'General performance improvements around the app and build process',
+      ],
+    },
+    {
       CompanyName: 'iTexico an improving company. AGS',
       specialization: 'Sr Reac Native Developer & Delivery Owner',
       MonthOfLeaving: '',
-      YearOfLeaving: 'Current',
+      YearOfLeaving: '2020',
       Achievements: [
         'Lead React Native Developer working with a team based on Austin, Texas',
         'Responsible of the integration and development of features requiring native implementation and control. (TouchId, Camera, etc)',
@@ -162,12 +190,31 @@ let resumeData: ResumeData = {
   moreSkills: 'Also worked with DynamoDB, AWS, PostgreSQL, MQTT, Angular',
   portfolio: [
     {
+      name: 'Storify',
+      detail: 'Personal React Native Project App ',
+      description:
+        'Creation of an application to share and post stuff based on privacy. Single hand design and development of all the features in the app. Publication of the app on play store',
+      imgurl: 'images/portfolio/storify.png',
+      year: '2021',
+      features: [
+        'Serverless Typescript application',
+        'React Hooks application',
+        'Animations using Reanimated 2',
+        'Authentication using google and firebase authentication module',
+        'Notification reminders of events added to calendar',
+        'Handling of push notifications with Firebase Cloud Messaging and Firebase Cloud Functions',
+        'Using firebase Firestore Database module',
+      ],
+      tools:
+        'React Native, ReactJS, Redux, NodeJS, Javascript, Java, Firebase Cloud, Google Cloud, Linux, Agile development.',
+    },
+    {
       name: 'Simple Wallet',
       detail: 'Personal React Native Project App ',
       description:
         'Creation of an application to help to control and track incomes and expenses. Single hand design and development of all the features in the app. Publication of the app on play store',
       imgurl: 'images/portfolio/simple-wallet.png',
-      year: '2018',
+      year: '2019',
       features: [
         'Serverless Typescript application',
         'React Hooks application',
