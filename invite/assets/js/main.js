@@ -26,7 +26,12 @@
       }),
       contentType: "application/json",
       success: function (response) {
-        $("#invite-names-id").text(response);
+        if (response) {
+          const { name, message } = JSON.parse(response);
+
+          $("#invite-names-id").text(name);
+          $("#invite-message-id").text(message);
+        }
       },
     });
   });
