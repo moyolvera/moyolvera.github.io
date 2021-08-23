@@ -1857,3 +1857,14 @@ img {
 .contact-form .btn {
   margin-top: 20px;
 }
+
+.danger {
+  background-color: #bd081c;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.danger p {
+  color: #fff;
+  text-align: center;
+}
