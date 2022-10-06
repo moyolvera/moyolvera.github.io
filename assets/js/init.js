@@ -159,6 +159,13 @@
       },
     });
 
+    $("#expo-code").click(function () {
+      window.open(
+        "exp://exp.host/@moyolvera/neh?release-channel=default",
+        "_blank"
+      );
+    });
+
     // hide #back-top first
     $("#back-top").hide();
 
