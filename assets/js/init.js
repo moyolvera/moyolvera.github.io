@@ -7,6 +7,40 @@
     jQuery(".preloader").delay(1000).fadeOut("slow");
   });
 
+  function registerNewVisit() {
+    setCookie("visit", "1", 15);
+
+    $.ajax({
+      headers: {
+        accept: "application/json",
+        "content-type": "application/json",
+        auth: "auth-token",
+      },
+      url: "https://us-central1-neh-mi.cloudfunctions.net/api/visit",
+      type: "POST",
+      data: {},
+    });
+  }
+
+  function setCookie(key, value, expiry) {
+    var expires = new Date();
+    expires.setTime(expires.getTime() + expiry * 24 * 60 * 60 * 1000);
+    document.cookie =
+      key + "=" + value + ";path=/" + ";expires=" + expires.toUTCString();
+  }
+
+  function getCookie(key) {
+    var keyValue = document.cookie.match("(^|;) ?" + key + "=([^;]*)(;|$)");
+    return keyValue ? keyValue[2] : null;
+  }
+
+  function handleNewVisit() {
+    var existCookie = getCookie("visit");
+    if (!existCookie) {
+      registerNewVisit();
+    }
+  }
+
   $(document).ready(function () {
     //
     // Off-canvas Nav
@@ -110,9 +144,9 @@
 
     //
     // Contact
-    var contact = $(".contact-form"),
-      successMessage = $(".contact-success"),
-      errorMessage = $(".contact-error");
+    var contact = $(".contact-form");
+    var successMessage = $(".contact-success");
+    var errorMessage = $(".contact-error");
 
     contact.validate({
       rules: {
@@ -143,15 +177,42 @@
         },
       },
       submitHandler: function (form) {
-        $(form).ajaxSubmit({
+        var messageSent = getCookie("message");
+        if (messageSent) {
+          successMessage.fadeOut();
+          errorMessage.html(
+            "You have already sent a message. I'll get in touch with you via email"
+          );
+          errorMessage.fadeIn();
+
+          return;
+        }
+
+        $.ajax({
           type: "POST",
-          data: $(form).serialize(),
-          url: "assets/php/contact.php",
+          headers: {
+            accept: "application/json",
+            "content-type": "application/json",
+            auth: "auth-token",
+          },
+          url: "https://us-central1-neh-mi.cloudfunctions.net/api/message",
+          dataType: "json",
+          contentType: "application/json; charset=utf-8",
+          data: JSON.stringify({
+            name: $("#name").val(),
+            email: $("#email").val(),
+            subject: $("#subject").val(),
+            message: $("#message").val(),
+          }),
           success: function () {
+            setCookie("message", "sent", 15);
             successMessage.fadeIn();
           },
           error: function () {
-            contact.fadeTo("slow", 0.15, function () {
+            contact.fadeTo("slow", 0.5, function () {
+              errorMessage.html(
+                "Opps!! You dont fill all required field correctly."
+              );
               errorMessage.fadeIn();
             });
           },
@@ -191,6 +252,7 @@
       });
     });
 
+    handleNewVisit();
     //$(window).scroll();
   });
 })(window.jQuery);
