@@ -165,15 +165,15 @@
       },
       messages: {
         name: {
-          required: "I would like to know your name, please.",
-          minlength: "your name must consist of at least 2 characters",
+          required: "I'd like to know your name, please.",
+          minlength: "Your name must be at least 2 characters long.",
         },
         email: {
           required: "This is a required field.",
         },
         message: {
-          required: "You have to write something to send this form.",
-          minlength: "Your message must consist of at least 10 characters",
+          required: "You need to write something before sending the form.",
+          minlength: "Your message must be at least 10 characters long.",
         },
       },
       submitHandler: function (form) {
@@ -181,7 +181,7 @@
         if (messageSent) {
           successMessage.fadeOut();
           errorMessage.html(
-            "You have already sent a message. I'll get in touch with you via email"
+            "You've already sent a message. I'll get in touch with you via email."
           );
           errorMessage.fadeIn();
 
@@ -211,7 +211,7 @@
           error: function () {
             contact.fadeTo("slow", 0.5, function () {
               errorMessage.html(
-                "Opps!! You dont fill all required field correctly."
+                "Oops! You didn't fill in all required fields correctly."
               );
               errorMessage.fadeIn();
             });
